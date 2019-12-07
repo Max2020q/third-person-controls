@@ -51,7 +51,8 @@
         animation-mixer="timeScale: 1.000"
         gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2F0038301a-5528-4f6f-a089-5b851bf7001f.glb?alt=media&token=a274ded3-59e7-4ee9-89db-84f0d66a3a9d"
         nav-agent="speed: 4.5"
-        game-controls>
+        game-controls
+        test-controls>
       </a-entity>
     </a-box>
 
@@ -88,11 +89,11 @@
 
     <a-box 
       id="Collider"
-      depth="70" 
-      width="30" 
-      height="70"
+      depth="55" 
+      width="20" 
+      height="55"
       static-body="shape: box;"
-      material="opacity:0">
+      material="opacity:1">
     </a-box>
   </a-entity>
 
@@ -127,20 +128,16 @@
 </a-scene>
 </body>
 
-
   <!--
-  //
   //-- Scene Team Game Engine
   //-- Free Game Design Online
   //
-  -- Third Person Character Controller
+  -- Third Person Character Controller (Included)
   -- Script: Enables player rotation with camera & player interactivity.
   //
   -- Do not include comment inside script or else it will not work on mobile
   //
   -- Please make sure to include a semicolon at the end of code statements
-  //
-  //
   -->   
 
 <head>
@@ -162,52 +159,60 @@
       init: function () {},
       update: function () {
         var el = this.el;
-        var player = document.getElementById('Mode');
-        var camera = document.getElementById('Camera');
-        this.eventHandlerFn = function(evt){
+        var canvasEl = document.querySelector(".a-canvas");
 
-          console.log("Click: Player interacted with game.");
-          console.log("Important: Create this game design by customizing this click.");
+        canvasEl.addEventListener("mousedown", function (e) {
+          var player = document.getElementById('Mode');
+          var camera = document.getElementById('Camera');
+          console.log("Mouse Down: Player clicked mouse.");
+        });
 
-        };
-        el.addEventListener('click', this.eventHandlerFn);
+        canvasEl.addEventListener("touchstart", function (e) {
+          var player = document.getElementById('Mode');
+          var camera = document.getElementById('Camera');
+          console.log("One-Finger Touch: Player touched screen on mobile.");
+        });
+
+        canvasEl.addEventListener("mouseup", function (e) {
+          var player = document.getElementById('Mode');
+          var camera = document.getElementById('Camera');
+          console.log("Mouse Up: Player let go of mouse click.");
+        });
+
+        canvasEl.addEventListener("touchend", function (e) {
+          var player = document.getElementById('Mode');
+          var camera = document.getElementById('Camera');
+          console.log("Touch Up: Player let go of screen touch on mobile.");
+        });
       },
       tick: function () {
-        var freemode = false;
+        var player_follow_camera_roation = true;
         var player = document.getElementById('Mode');
         var camera = document.getElementById('Camera');
-        if(freemode===true){
-          return;
-        }
-        else{
-          player.setAttribute('rotation', {x: 0, y: camera.getAttribute('rotation').y, z: 0});
-        }
+        player.setAttribute('rotation', {x: 0, y: camera.getAttribute('rotation').y, z: 0});
       },
       remove: function () {},
       pause: function () {},
       play: function () {}
     });
   </script>
+  
 
   <!--
-  //
   //-- Scene Team Game Engine
   //-- Improve Games with custom packages
   //-- Customize Game Engine with Packages
   //
-  //
   // HOW TO CREATE AND PUBLISH A CUSTOM PACKAGE 
-  -- https://www.gitpod.io/
-  -- npm init -y
-  -- npm login (enter username-password-email)
-  -- Change and save new version in package.json
-  -- npm publish .
-  -- https://www.npmjs.com/ and search for package
-  -- https://www.jsdelivr.com/features to find script
-  -- https://www.jsdelivr.com/package/npm/*enter name*
-  -- Copy/Paste URL link to include script into game
-  //
-  //
+  // -- https://www.gitpod.io/
+  // -- npm init -y
+  // -- npm login (enter username-password-email)
+  // -- Change and save new version in package.json
+  // -- npm publish .
+  // -- https://www.npmjs.com/ and search for package
+  // -- https://www.jsdelivr.com/features to find script
+  // -- https://www.jsdelivr.com/package/npm/*enter name*
+  // -- Copy/Paste URL link to include script into game
   -->  
 
   <!--Game Engine Packages-->
