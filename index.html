@@ -77,13 +77,15 @@
   </a-entity>
 
   <!---Wall Colliders--->
-  <a-entity position="20.65676 0 -21.24443" id="Wall Collider">
+  <a-entity  id="Wall Collider">
     <a-box 
       id="Wall"
       depth="40" 
       width="5" 
       height="40"
       color="green" 
+      static-body="shape: box;"
+      position="-300 0 -21.24443"
       material="opacity:1 ">
     </a-box>
 
@@ -93,6 +95,27 @@
       width="20" 
       height="55"
       static-body="shape: box;"
+      position="300 0 -21.24443"
+      material="opacity:1">
+    </a-box>
+
+    <a-box 
+      id="Collider"
+      depth="55" 
+      width="20" 
+      height="55"
+      static-body="shape: box;"
+      position="0 0 -300"
+      material="opacity:1">
+    </a-box>
+    
+    <a-box 
+      id="Collider"
+      depth="55" 
+      width="20" 
+      height="55"
+      static-body="shape: box;"
+      position="0 0 300"
       material="opacity:1">
     </a-box>
   </a-entity>
