@@ -45,7 +45,8 @@
       camera
       position="0 -2 0" 
       kinematic-body
-      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;" >
+      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;" 
+    >
         <a-cursor 
           material="opacity:0" 
           fuse="false">
@@ -66,18 +67,44 @@
     shadow
     scale="1 1 1" 
     rotation="-90 0 0" 
-    position="0 -15 0"
+    position="0 -20 0"
     geometry="primitive: plane; height: 1000; width: 1000; segmentsWidth: 500; segmentsHeight: 500;" 
     material="displacementScale:0; displacementMap:; normalMap:; src:;">
   </a-entity>
 
-  <!---Wall Colliders--->
-  <a-box 
-    id="Collider"
+  <a-entity 
+    id="Object" 
     scale="1 1 1" 
-    position="0 -100 -300"
+    rotation="0 0 0" 
+    position="0 0 -50"
     static-body="shape: box;"
-    depth="20" width="200" height="80"
+    gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
+	</a-entity>
+  
+	<!---Lights--->
+	<a-light 
+    id="Light_World" 
+    color="white" 
+    intensity="1" 
+    type="hemisphere">
+	</a-light>
+
+	<a-light 
+    id="Light_Level" 
+    scale="1 1 1" 
+    position="2 10 4" 
+    rotation="0 0 0" 
+    intensity="1" 
+    color="white" 
+    type="directional">
+	</a-light>
+
+  <!---Level Colliders--->
+  <a-box 
+    id="Ground"
+    position="0 -20 0"
+    static-body="shape: box;"
+    depth="1000" width="1000" height="5"
     material="opacity:0">
   </a-box>
 
@@ -112,24 +139,15 @@
     depth="85" width="800" height="85"
     material="opacity:0">
   </a-box>
-
-	<!---Lights--->
-	<a-light 
-    id="Light_World" 
-    color="white" 
-    intensity="1" 
-    type="hemisphere">
-	</a-light>
-
-	<a-light 
-    id="Light_Level" 
+  
+  <a-box 
+    id="Extra"
     scale="1 1 1" 
-    position="2 10 4" 
-    rotation="0 0 0" 
-    intensity="1" 
-    color="white" 
-    type="directional">
-	</a-light>
+    position="0 -100 -300"
+    static-body="shape: box;"
+    depth="20" width="200" height="80"
+    material="opacity:0">
+  </a-box>
   
 	<!--Navigation Map-->
 	<a-entity 
@@ -137,7 +155,7 @@
     scale="1 1 1" 
     rotation="0 0 0" 
     position="0 -50 0"
-    visible="true" 
+    visible="false" 
 	  nav-mesh
     gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
 	</a-entity>
@@ -186,7 +204,7 @@
         canvasEl.addEventListener("touchstart", function (e) {
           var player = document.getElementById('Mode');
           var camera = document.getElementById('Camera');
-          console.log("One-Finger Touch: Player touched screen on mobile.");
+          console.log("Touch Down: Player touched screen on mobile.");
         });
 
         canvasEl.addEventListener("mouseup", function (e) {
