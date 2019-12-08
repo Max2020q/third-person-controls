@@ -1,6 +1,6 @@
 <body>
 
-  <!--Scene Team Engine-->
+  <!--Game Engine-->
   <a-scene
     bloom
     stats="false"
@@ -8,15 +8,32 @@
     vr-mode-ui="enabled: false"
     fog="color: white;density: 0.00;type: exponential;">
 
-	<!----Skybox---->
-	<a-sky 
-    src=""
-    id="sky" 
-    material=" 
-      side: back; 
-      shader: skyshader; 
-      sunPosition: 17 41 27;">
-	</a-sky>
+  <!---Game World Sound---> 
+  <a-entity 
+    id="Sound"
+    position="0 0 0" 
+    sound="src: url( ); autoplay: true; volume: 60; loop: true;">
+  </a-entity>
+
+	<!--Game World Model-->
+  <a-entity 
+    id="World" 
+    shadow
+    scale="1 1 1" 
+    rotation="-90 0 0" 
+    position="0 -20 0"
+    geometry="primitive: plane; height: 1000; width: 1000; segmentsWidth: 500; segmentsHeight: 500;" 
+    material="displacementScale:0; displacementMap:; normalMap:; src:;">
+  </a-entity>
+
+  <a-entity 
+    id="Object" 
+    scale="1 1 1" 
+    rotation="0 0 0" 
+    position="0 0 -50"
+    static-body="shape: box;"
+    gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
+	</a-entity>
 
 	<!---Game Design--->
 	<a-entity 
@@ -54,32 +71,15 @@
     </a-entity>
 	</a-entity>
 
-  <!---Game World Sound---> 
-  <a-entity 
-    id="Sound"
-    position="0 0 0" 
-    sound="src: url( ); autoplay: true; volume: 60; loop: true;">
-  </a-entity>
-
-	<!--Game World Model-->
-  <a-entity 
-    id="World" 
-    shadow
-    scale="1 1 1" 
-    rotation="-90 0 0" 
-    position="0 -20 0"
-    geometry="primitive: plane; height: 1000; width: 1000; segmentsWidth: 500; segmentsHeight: 500;" 
-    material="displacementScale:0; displacementMap:; normalMap:; src:;">
-  </a-entity>
-
-  <a-entity 
-    id="Object" 
-    scale="1 1 1" 
-    rotation="0 0 0" 
-    position="0 0 -50"
-    static-body="shape: box;"
-    gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
-	</a-entity>
+	<!----Skybox---->
+	<a-sky 
+    src=""
+    id="sky" 
+    material=" 
+      side: back; 
+      shader: skyshader; 
+      sunPosition: 17 41 27;">
+	</a-sky>
   
 	<!---Lights--->
 	<a-light 
@@ -166,12 +166,12 @@
   //-- Scene Team Game Engine
   //-- Free Game Design Online
   //
-  -- Third Person Character Controller (Included)
+  -- Third Person Character Controller
   -- Script: Enables player rotation with camera & player interactivity.
   //
-  -- Do not include comment inside script or else it will not work on mobile
+  -- Do not include comment inside aframe component scripts or else it will not work on mobile.
   //
-  -- Please make sure to include a semicolon at the end of code statements
+  -- Please make sure to include a semicolon at the end of code statements.
   -->   
 
 <head>
@@ -249,7 +249,7 @@
   // -- Copy/Paste URL link to include script into game
   -->  
 
-  <!--Game Engine Packages-->
+  <!--PACKAGES-->
   <script src="https://cdn.jsdelivr.net/npm/aframe-scene-extras@5.1.8/dist/aframe-extras.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-orbit-controls-component-3@0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-navigate-on-click@1.1.0/aframe-navigate-on-click.js"></script>
