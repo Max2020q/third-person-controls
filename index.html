@@ -1,7 +1,8 @@
 <body>
 
-  <!--Game Scene Engine-->
-  <a-scene
+  <!--Scene Game Engine-->
+  <a-scene 
+    id="Game"
     bloom
     stats="false"
     physics="gravity:0"
@@ -17,7 +18,7 @@
 
 	<!--Game World Model-->
   <a-entity 
-    id="World" 
+    id="Environment" 
     shadow
     scale="1 1 1" 
     rotation="-90 0 0" 
@@ -35,9 +36,9 @@
     gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
 	</a-entity>
 
-	<!---Game Design--->
+	<!---Game Controls--->
 	<a-entity 
-    id="Game_Camera" 
+    id="Controls" 
     scale="15 15 15"
     kinematic-body
     movement-controls="speed:2; fly:false ;controls:touch;">
@@ -62,8 +63,7 @@
       camera
       position="0 -2 0" 
       kinematic-body
-      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;" 
-    >
+      orbit-controls="maxPolarAngle: 1.5; enablePan: false; target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;">
         <a-cursor 
           material="opacity:0" 
           fuse="false">
@@ -74,7 +74,7 @@
 	<!----Skybox---->
 	<a-sky 
     src=""
-    id="sky" 
+    id="Weather" 
     material=" 
       side: back; 
       shader: skyshader; 
@@ -83,14 +83,14 @@
   
 	<!---Lights--->
 	<a-light 
-    id="Light_World" 
+    id="Light World" 
     color="white" 
     intensity="1" 
     type="hemisphere">
 	</a-light>
 
 	<a-light 
-    id="Light_Level" 
+    id="Light Direct" 
     scale="1 1 1" 
     position="2 10 4" 
     rotation="0 0 0" 
@@ -99,7 +99,7 @@
     type="directional">
 	</a-light>
 
-  <!---Level Colliders--->
+  <!---Level Borders--->
   <a-box 
     id="Ground"
     position="0 -20 0"
@@ -141,7 +141,7 @@
   </a-box>
   
   <a-box 
-    id="Extra"
+    id="Collider"
     scale="1 1 1" 
     position="0 -100 -300"
     static-body="shape: box;"
@@ -180,11 +180,16 @@
     rel="shortcut icon"
     href="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/Icons%2Fframe-1%20(2).ico?alt=media&token=e64dfd7b-e4d4-4b25-850a-ce63c5af1f6c"
   />
-  <script src="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/0_Packages%2Fpace.min%20(1).js?alt=media&token=3f21b992-122e-4094-8207-4c6e68b9f943"></script>
+  <script 
+  id="loading bar script (pace.js)"
+  src="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/0_Packages%2Fpace.min%20(1).js?alt=media&token=3f21b992-122e-4094-8207-4c6e68b9f943"></script>
   <link 
-  href="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/0_Packages%2Floading.css?alt=media&token=9fe7bd08-4900-4ba4-b0c9-24ccccca22c0" 
-    rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/scene-aframe@0.8.9/dist/aframe-master.min.js"></script>
+  rel="stylesheet"
+  id="loading bar customization (pace.js)"
+  href="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/0_Packages%2Floading.css?alt=media&token=9fe7bd08-4900-4ba4-b0c9-24ccccca22c0"/>
+  <script 
+  id="Aframe Game Engine Framework"
+  src="https://cdn.jsdelivr.net/npm/scene-aframe@0.8.9/dist/aframe-master.min.js"></script>
   <meta name="theme-color" content="#000"/>
   
   
@@ -249,7 +254,7 @@
   // -- Copy/Paste URL link to include script into game
   -->  
 
-  <!--PACKAGES-->
+  <!--Packages-->
   <script src="https://cdn.jsdelivr.net/npm/aframe-scene-extras@5.1.8/dist/aframe-extras.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-orbit-controls-component-3@0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-navigate-on-click@1.1.0/aframe-navigate-on-click.js"></script>
@@ -257,7 +262,7 @@
   <script src="https://cdn.jsdelivr.net/npm/aframe-touch-look-controls@1.1.0/touch-look-controls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-mouse-rotate@1.1.0/mouse-rotate.js"></script>
 
-  <!--UTILITIES-->
+  <!--Utilities-->
   <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
   <script src="https://unpkg.com/aframe-template-component@^3.2.1/dist/aframe-template-component.min.js"></script>
   <script src="https://rawgit.com/Utopiah/aframe-persist-component/master/aframe-persist-component.js"></script>  
@@ -280,7 +285,7 @@
   <script src="https://unpkg.com/aframe-location-persistance-component/dist/aframe-location-persistance-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-mouse-controls@1.0.6/index.min.js"></script>
 
-  <!--MODELING--> 
+  <!--Modeling--> 
   <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
   <script src="https://unpkg.com/aframe-mirror-component/dist/aframe-mirror-component.min.js"></script>
   <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
@@ -289,7 +294,7 @@
   <script src="https://cdn.jsdelivr.net/npm/aframe-shaders/aframe-shader-frog.js"></script>
   <script src="https://unpkg.com/aframe-raytrace-component/dist/aframe-raytrace-component.min.js"></script>
   
-  <!--ANIMATION-->
+  <!--Animation-->
   <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
   <script src="https://unpkg.com/aframe-entity-generator-component@^3.0.0/dist/aframe-entity-generator-component.min.js"></script>
   <script src="https://unpkg.com/aframe-motion-capture-components/dist/aframe-motion-capture-components.min.js"></script>
@@ -302,20 +307,20 @@
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
   <script src="https://rawgit.com/gmarty/aframe-ui-components/master/dist/aframe-ui-components.min.js"></script> 
 
-  <!--PARTICLES-->
+  <!--Particles-->
   <script src="https://unpkg.com/aframe-point-component/dist/aframe-point-component.min.js"></script>
   <script src="https://unpkg.com/aframe-sprite-particles-component@^0.5.0/aframe-sprite-particles-component.js"></script>
   <script src="https://unpkg.com/aframe-particleplayer-component/dist/aframe-particleplayer-component.min.js"></script>
   <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
   <script src="https://unpkg.com/aframe-mesh-particles-component@^0.4.0/aframe-mesh-particles-component.js"></script> 
   
-  <!--AUDIO-->
+  <!--Audio-->
   <script src="https://unpkg.com/aframe-audioanalyser-component@^3.0.3/dist/aframe-audioanalyser-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.miX zx n.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-sesh-audio@0.3.0/components/noah-ra-room.min.js"></script>
   <script src="https://cdn.rawgit.com/noahneumark/aframe-resonance-audio/fe37437/components/noah-ra-src.min.js"></script>
   <script src="https://cdn.rawgit.com/noahneumark/aframe-resonance-audio/fe37437/components/noah-ra-beatsync.min.js"></script>
-  <!--PACKAGES-->
+  <!--Packages-->
 </head>
 </html>
 <!--Game-->
