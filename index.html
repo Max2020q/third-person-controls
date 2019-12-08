@@ -27,27 +27,25 @@
     <a-box 
       id="Model"
       position="0 -1 0" 
-      depth="3" width="2" height="1"
-      visible="true"
-      material="opacity:0">
+      material="opacity:0"
+      depth="3" width="2" height="1">
       <a-entity 
         id="Mode"
+        game-controls
         scale="1 1 1"
         position="0 0 0" 
+        nav-agent="speed: 4.5"
         camera-cube-env="resolution:100;"
         animation-mixer="timeScale: 1.000"
-        gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2F0038301a-5528-4f6f-a089-5b851bf7001f.glb?alt=media&token=a274ded3-59e7-4ee9-89db-84f0d66a3a9d"
-        nav-agent="speed: 4.5"
-        game-controls
-        test-controls>
+        gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2F0038301a-5528-4f6f-a089-5b851bf7001f.glb?alt=media&token=a274ded3-59e7-4ee9-89db-84f0d66a3a9d">
       </a-entity>
     </a-box>
     <a-entity 
       id="Camera"
+      camera
       position="0 -2 0" 
-      camera 
       kinematic-body
-      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;">
+      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;" >
         <a-cursor 
           material="opacity:0" 
           fuse="false">
@@ -57,7 +55,7 @@
 
   <!---Game World Sound---> 
   <a-entity 
-    id="sound"
+    id="Sound"
     position="0 0 0" 
     sound="src: url( ); autoplay: true; volume: 60; loop: true;">
   </a-entity>
