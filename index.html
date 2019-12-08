@@ -19,29 +19,20 @@
       sunPosition: 17 41 27;">
 	</a-sky>
 
-	<!--Game World Model-->
-  <a-entity 
-    id="World" 
-    shadow
-    scale="5 1 5" 
-    rotation="0 0 0" 
-    position="0 0 4" gltf-model="https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/G8xNtAPcsu3Bi2P7IMwW%2Fnavmesh%20(6).gltf?alt=media&token=985c3bc1-6b5e-4b6b-b4c6-6ea313ec3f7d">
-  </a-entity>
-
 	<!---Game Design--->
 	<a-entity 
     id="Game_Camera" 
     scale="15 15 15"
     kinematic-body
-    movement-controls="speed:2; fly:false ;controls:touch;">
+    movement-controls="speed:2; fly:false ;controls:touch;"
+  >
 
     <a-box 
       id="Model"
-      depth="3"
-      width="2"
       position="0 -1 0" 
+      depth="3" width="2" height="1"
       visible="true"
-      material="opacity:0" 
+      material="opacity:0"
     >
       <a-entity 
         id="Mode"
@@ -61,7 +52,7 @@
       position="0 -2 0" 
       camera 
       kinematic-body
-      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;" >
+      orbit-controls="maxPolarAngle: 1.5; enablePan: false;  target: #Mode; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:2; maxDistance:8;">
         <a-cursor 
           material="opacity:0" 
           fuse="false">
@@ -76,48 +67,61 @@
     sound="src: url( ); autoplay: true; volume: 60; loop: true;">
   </a-entity>
 
+	<!--Game World Model-->
+  <a-entity 
+    id="World" 
+    shadow
+    scale="1 1 1" 
+    rotation="-90 0 0" 
+    position="0 -15 0"
+    geometry="primitive: plane; height: 1000; width: 1000; segmentsWidth: 500; segmentsHeight: 500;" 
+    material="displacementScale:0; displacementMap:; normalMap:; src:;">
+  </a-entity>
+
   <!---Wall Colliders--->
-  <a-entity  id="Wall Collider">
-    <a-box 
-      id="Wall"
-      depth="40" 
-      width="5" 
-      height="40"
-      color="green" 
-      static-body="shape: box;"
-      position="-300 0 -21.24443"
-      material="opacity:1 ">
-    </a-box>
-
-    <a-box 
-      id="Collider"
-      depth="55" 
-      width="20" 
-      height="55"
-      static-body="shape: box;"
-      position="300 0 -21.24443"
-      material="opacity:1">
-    </a-box>
-
-    <a-box 
-      id="Collider"
-      depth="55" 
-      width="20" 
-      height="55"
-      static-body="shape: box;"
-      position="0 0 -300"
-      material="opacity:1">
-    </a-box>
+  <a-entity id="Wall Colliders">
     
     <a-box 
       id="Collider"
-      depth="55" 
-      width="20" 
-      height="55"
+      scale="1 1 1" 
+      position="0 -100 -300"
       static-body="shape: box;"
-      position="0 0 300"
-      material="opacity:1">
+      depth="20" width="200" height="80"
+      material="opacity:0">
     </a-box>
+
+    <a-box 
+      id="Wall"
+      position="-400 0 0"
+      static-body="shape: box;"
+      depth="800" width="85" height="85"
+      material="opacity:0 ">
+    </a-box>
+
+    <a-box 
+      id="Wall"
+      position="400 0 0"
+      static-body="shape: box;"
+      depth="800" width="85" height="85"
+      material="opacity:0">
+    </a-box>
+
+    <a-box 
+      id="Wall"
+      position="0 0 -400"
+      static-body="shape: box;"
+      depth="85" width="800" height="85"
+      material="opacity:0">
+    </a-box>
+    
+    <a-box 
+      id="Wall"
+      position="0 0 400"
+      static-body="shape: box;"
+      depth="85" width="800" height="85"
+      material="opacity:0">
+    </a-box>
+
   </a-entity>
 
 	<!---Lights--->
