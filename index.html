@@ -22,9 +22,9 @@
     shadow
     scale="1 1 1" 
     rotation="-90 0 0" 
-    position="0 -20 0"
+    position="0 -19 0"
     geometry="primitive: plane; height: 1000; width: 1000; segmentsWidth: 500; segmentsHeight: 500;" 
-    material="displacementScale:0; displacementMap:; normalMap:; src:;">
+    material="displacementScale:0.5; repeat:6 6;displacementMap:https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2Fb0da1284-2d1f-4213-980d-9d0c0277951d.jpg?alt=media&token=aea77b1e-cd68-4473-91f3-c5d259ae9a0d; normalMap:https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2F1c9286d9-645c-490f-ba0e-e0f8e5fc8fc8.jpg?alt=media&token=b65b256d-1cd9-4627-8646-63dd28740396; src:https://firebasestorage.googleapis.com/v0/b/timbre-d11e2.appspot.com/o/assets%2Faeb5a170-6ac5-4fc6-8c06-40f7c6083d2f.jpg?alt=media&token=04f5eba4-35d6-4bf3-bbd6-6bb76d9e0a7d;">
   </a-entity>
 
   <a-entity 
@@ -41,7 +41,7 @@
     id="Controls" 
     scale="15 15 15"
     kinematic-body
-    movement-controls="speed:2; fly:false ;controls:touch;">
+    movement-controls="speed:2.5; fly:false ;controls:touch;">
     <a-box 
       id="Model"
       position="0 -1 0" 
@@ -49,6 +49,7 @@
       depth="3" width="2" height="1">
       <a-entity 
         id="Mode"
+        shadow
         game-controls
         scale="1 1 1"
         position="0 0 0" 
@@ -84,7 +85,7 @@
 	<!---Lights--->
 	<a-light 
     id="Light World" 
-    color="white" 
+    color="grey" 
     intensity="1" 
     type="hemisphere">
 	</a-light>
@@ -94,7 +95,7 @@
     scale="1 1 1" 
     position="2 10 4" 
     rotation="0 0 0" 
-    intensity="1" 
+    intensity=".8" 
     color="white" 
     type="directional">
 	</a-light>
